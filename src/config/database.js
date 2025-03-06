@@ -168,7 +168,7 @@ const minusQuantity = async (id, orderQuantity) =>{
     const result = await pool.query(
         `UPDATE "Product" 
         SET quantity = quantity - $2, updatedAt = CURRENT_TIMESTAMP
-        WHERE id = $1 AND quantity >= $2
+        WHERE name = $1 AND quantity >= $2
         RETURNING *;
         `,
         [id, orderQuantity]
@@ -236,7 +236,21 @@ const addOrder = async ({ name, email, phone_number, delivery_address, product_i
 };
 
 const getAllOrders = async() => {
-    const result = await pool.query('SELECT * FROM "Orders"');
+    const result = await pool.query(`
+        SELECT 
+            o.id,
+            o.name,
+            o.email,
+            o.phone_number,
+            o.delivery_address,
+            array_agg(p.name) AS product_id,
+            o.quantity,
+            o.createdAt,
+            o.updatedAt
+        FROM "Orders" o
+        JOIN "Product" p ON p.id = ANY(o.product_id)
+        GROUP BY o.id;
+    `);
     return result.rows;
 };
 
@@ -283,7 +297,21 @@ const createAllOrdersTable = async() =>{
 };
 
 const getToAllOrdersTable = async() =>{
-    const result = await pool.query('SELECT * FROM "AllOrders"');
+    const result = await pool.query(`
+        SELECT 
+            ao.id,
+            ao.name,
+            ao.email,
+            ao.phone_number,
+            ao.delivery_address,
+            array_agg(p.name) AS product_id, 
+            ao.quantity,
+            ao.createdAt,
+            ao.order_status
+        FROM "AllOrders" ao
+        JOIN "Product" p ON p.id = ANY(ao.product_id)
+        GROUP BY ao.id;
+    `);
     return result.rows;
 }
 
@@ -300,7 +328,22 @@ const cancelOrderStatus = async (orderId) => {
 
 const getUsersOrders = async (userName) => {
     try {
-        const result = await pool.query('SELECT * FROM "AllOrders" WHERE name = $1', [userName]);
+        const result = await pool.query(`
+            SELECT 
+                ao.id,
+                ao.name,
+                ao.email,
+                ao.phone_number,
+                ao.delivery_address,
+                array_agg(p.name) AS product_id,
+                ao.quantity,
+                ao.createdAt,
+                ao.order_status
+            FROM "AllOrders" ao
+            JOIN "Product" p ON p.id = ANY(ao.product_id)  
+            WHERE ao.name = $1  
+            GROUP BY ao.id;
+        `, [userName]);
         return result.rows;
     } catch (error) {
         console.error("Ошибка при получении заказов из БД:", error);

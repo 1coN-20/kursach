@@ -66,7 +66,8 @@ document.addEventListener("DOMContentLoaded", async function () {
                 order.name.toLowerCase().includes(filterValue) ||
                 order.email.toLowerCase().includes(filterValue) ||
                 order.phone_number.toLowerCase().includes(filterValue) ||
-                order.delivery_address.toLowerCase().includes(filterValue)
+                order.delivery_address.toLowerCase().includes(filterValue) ||
+                String(order.product_id).toLowerCase().includes(filterValue)
             );
         });
 

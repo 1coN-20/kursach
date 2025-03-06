@@ -32,6 +32,10 @@ th, td {
     border: 1px solid #ddd;
 }
 
+td:nth-child(6){
+    width: 215px;
+}
+
 tbody tr:nth-child(odd) {
     background: #f2f2f2;
 }

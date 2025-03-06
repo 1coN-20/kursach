@@ -70,6 +70,10 @@ th, td {
     border: 1px solid #ddd;
 }
 
+td{
+    width: 25%;
+}
+
 tbody tr:nth-child(odd) {
     background: #f2f2f2;
 }
