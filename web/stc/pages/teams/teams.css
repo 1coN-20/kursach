@@ -1,0 +1,29 @@
+.main_list{
+    display: flex;
+    justify-content: space-between;
+}
+
+.list_obj{
+    width: 500px;
+    background-color: aquamarine;
+    border-radius: 5px;
+    margin: 0 auto;
+}
+
+.team{
+    font-size: 40px;
+    color: black;
+    display: flex;
+    justify-content: center;
+}
+
+.photo{
+    width: 400px;
+    height: 250px;
+    padding: 0 50px;
+    padding-bottom: 12px;
+}
+
+.div_team{
+    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.15);
+}

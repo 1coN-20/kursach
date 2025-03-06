@@ -1,0 +1,27 @@
+.main_ul{
+    display: flex;
+    justify-content: space-around;
+}
+
+.news_div1{
+    margin: 10px;
+    padding: 10px;
+    background-color: aquamarine;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+}
+
+.news_header{
+    font-size: 24px;
+    font-weight: bold;;
+}
+
+.news_img{
+    width: 40px;
+    height: 40px;
+}
+
+.news_description{
+    font-size: 16px;
+}

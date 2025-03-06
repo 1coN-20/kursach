@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product</title>
+    <link rel="stylesheet" href="/web/stc/pages/admin/products/products.css">
+    <link rel="stylesheet" href="/web/stc/pages/global/global.css">
+    <script src="/web/stc/pages/admin/products/products.js" defer></script>
+    <script src="/web/stc/pages/global/global.js" defer></script>
+</head>
+<body>
+    <header class="header_wrapper">
+        <div class="wrapper"> 
+            <div class="wrapper_logo"> 
+                <div><a href="/web/stc/pages/main/main.html"><img class="logo_img" src="/web/img/BC_Minsk_2022_logo.png"></a></div>
+            </div>
+            
+            <a class="a_categories" href="/web/stc/pages/main/main.html">Новости</a>
+            <a class="a_categories" href="/web/stc/pages/kalendar/kalendar.html">Календарь</a>
+            <a class="a_categories" href="/web/stc/pages/teams/teams.html">Команды</a>
+            <a class="a_categories" href="/web/stc/pages/club/club.html">Клуб</a>
+            <a class="a_categories" href="/web/stc/pages/shop/shop.html">Магазин</a>
+            <div class="basket_logo">
+                <div><a href="/web/stc/pages/basket/basket.html"><img class="logo_img" src="/web/img/basket.png"></a></div>
+                <span id="cart-item-count" class="cart-item-count">0</span>
+            </div>
+            <a class="a_categories" href="/web/stc/pages/auth/auth.html">Войти</a>
+        </div>
+    </header>
+
+    <main>
+
+        <div class="search_wrapper">
+            <div class="search_div">
+                <input type="search" class="search_input" placeholder="Поиск">
+                <img src="/web/img/search.png" alt="" class="search_img">
+            </div>
+        </div>
+
+        <h1>Список товаров</h1>
+        <table id="orders-table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Название</th>
+                    <th>Image URL</th>
+                    <th>Цена</th>
+                    <th>Остаток</th>
+                    <th>Действие</th>
+                </tr>
+            </thead>
+            <tbody>
+                
+            </tbody>
+        </table>
+    </main>
+
+    <div class="container">
+        <div><h1 class="header">Добавить товар</h1></div>
+        <div class="form_div">
+            <form id="add-product-form" class="add-product-form">
+                <div id="product-fields" class="form-section">
+                    <p class="news_description">Название товара:</p>
+                    <input type="text" id="product-name" required><br>
+
+                    <p class="news_description">Изображение (URL):</p>
+                    <input type="text" id="product-image" required><br>
+
+                    <p class="news_description">Цена (руб.):</p>
+                    <input type="number" id="product-price" required><br>
+
+                    <p class="news_description">Количество:</p>
+                    <input type="number" id="product-quantity" required><br>
+
+                    <button type="submit">Добавить</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="container">
+        <div><h1 class="header">Изменить товар</h1></div>
+        <div class="form_div">
+            <form id="change-product-form" class="change-product-form">
+                <div id="product-fields" class="form-section">
+                    <p class="news_description">ID товара:</p>
+                    <input type="number" id="product-id" required oninput="enableFields()"><br>
+
+                    <p class="news_description">Название товара:</p>
+                    <input type="text" id="change-product-name" disabled><br>
+
+                    <p class="news_description">Изображение (URL):</p>
+                    <input type="text" id="change-product-image" disabled><br>
+
+                    <p class="news_description">Цена (руб.):</p>
+                    <input type="number" id="change-product-price" disabled><br>
+
+                    <p class="news_description">Количество:</p>
+                    <input type="number" id="change-product-quantity" disabled><br>
+
+                    <button type="submit">Изменить</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

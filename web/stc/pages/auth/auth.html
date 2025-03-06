@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="auth.css">
+    <link rel="stylesheet" href="/web/stc/pages/global/global.css">
+    <script src="auth.js" defer></script>
+    <script src="/web/stc/pages/global/global.js"></script>
+    <title>Авторизация</title>
+</head>
+<body>
+    <header class="header_wrapper">
+        <div class="wrapper"> 
+            <div class="wrapper_logo"> 
+                <div><a href="/web/stc/pages/main/main.html"><img class="logo_img" src="/web/img/BC_Minsk_2022_logo.png"></a></div>
+            </div>
+            
+            <a class="a_categories" href="/web/stc/pages/main/main.html">Новости</a>
+            <a class="a_categories" href="/web/stc/pages/kalendar/kalendar.html">Календарь</a>
+            <a class="a_categories" href="/web/stc/pages/teams/teams.html">Команды</a>
+            <a class="a_categories" href="/web/stc/pages/club/club.html">Клуб</a>
+            <a class="a_categories" href="/web/stc/pages/shop/shop.html">Магазин</a>
+            <div class="basket_logo">
+                <div><a href="/web/stc/pages/basket/basket.html"><img class="logo_img" src="/web/img/basket.png"></a></div>
+                <span id="cart-item-count" class="cart-item-count">0</span> <!-- Новый элемент для отображения количества товаров -->
+            </div>
+            <a class="a_categories" href="/web/stc/pages/auth/auth.html">Войти</a>
+        </div>
+    </header>
+
+    <div class="main_list_news">
+        <div class="auth_div1">
+            <a class="news_header">Авторизация для администратора</a>
+            <form id="login-form">
+                <div class="form_div">
+                    <p class="news_description">Логин:</p>
+                    <input type="email" id="email" placeholder="Введите email" required>
+                    <p class="news_description">Пароль:</p>
+                    <input type="password" id="password" placeholder="Введите пароль" required>
+                    <button type="submit" id="login-button">Войти</button>
+                    <div class="auth-footer">
+                        <p>Нет аккаунта? <a href="/web/stc/pages/auth/register/register.html" id="register-link">Зарегистрироваться</a></p>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All orders</title>
+    <link rel="stylesheet" href="/web/stc/pages/admin/allOrders/allOrders.css">
+    <link rel="stylesheet" href="/web/stc/pages/global/global.css">
+    <script src="/web/stc/pages/global/global.js" defer></script>
+    <script src="/web/stc/pages/admin/allOrders/allOrders.js" defer></script></head>
+<body>
+    <header class="header_wrapper">
+        <div class="wrapper"> 
+            <div class="wrapper_logo"> 
+                <div><a href="/web/stc/pages/main/main.html"><img class="logo_img" src="/web/img/BC_Minsk_2022_logo.png"></a></div>
+            </div>
+            
+            <a class="a_categories" href="/web/stc/pages/main/main.html">Новости</a>
+            <a class="a_categories" href="/web/stc/pages/kalendar/kalendar.html">Календарь</a>
+            <a class="a_categories" href="/web/stc/pages/teams/teams.html">Команды</a>
+            <a class="a_categories" href="/web/stc/pages/club/club.html">Клуб</a>
+            <a class="a_categories" href="/web/stc/pages/shop/shop.html">Магазин</a>
+            <div class="basket_logo">
+                <div><a href="/web/stc/pages/basket/basket.html"><img class="logo_img" src="/web/img/basket.png"></a></div>
+                <span id="cart-item-count" class="cart-item-count">0</span>
+            </div>
+            <a class="a_categories" href="/web/stc/pages/auth/auth.html">Войти</a>
+        </div>
+    </header>
+
+    <main>
+
+        <div class="search_wrapper">
+            <div class="search_div">
+                <input type="search" class="search_input" placeholder="Поиск">
+                <img src="/web/img/search.png" alt="" class="search_img">
+            </div>
+        </div>
+        
+        <h1>Список заказов</h1>
+        <table id="orders-table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Имя</th>
+                    <th>Email</th>
+                    <th>Телефон</th>
+                    <th>Адрес доставки</th>
+                    <th>Товары (ID)</th>
+                    <th>Количество</th>
+                    <th>Статус</th>
+                </tr>
+            </thead>
+            <tbody>
+                
+            </tbody>
+        </table>
+    </main>
+</body>
+</html>

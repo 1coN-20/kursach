@@ -1,0 +1,17 @@
+.main{
+    width: 95%;
+    background-color: aquamarine;
+    margin: 0 auto;
+    border-radius: 5px;
+}
+
+.div_head{
+    font-weight: bold;
+    margin: 0 auto;
+    font-size: 36px;
+    text-align: center;
+}
+
+.div_team{
+    text-align: center;
+}

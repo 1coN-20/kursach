@@ -1,0 +1,162 @@
+a {
+    text-decoration: none;
+}
+
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+ul {
+    list-style: none;
+}
+
+.header_wrapper {
+    display: flex;
+    background-color: cornflowerblue;
+    justify-content: center;
+    align-items: center;
+    height: 70px;
+}
+
+.wrapper_logo {
+    display: flex;
+    justify-content: center;
+}
+
+.basket_logo {
+    display: flex;
+    justify-content: flex-end;
+    border: 2px solid cornflowerblue;
+    border-radius: 8px;
+}
+
+.cart-item-count{
+    margin-right: 2px;
+}
+
+.logo_img {
+    height: 45px;
+    padding: 2px;
+    box-sizing: border-box;
+}
+
+
+.a_categories {
+    color: white;
+    transition: color 0.3s;
+    background-color: cornflowerblue;
+    border-radius: 8px;
+    padding: 5px;
+    margin: 2px;
+    margin-left: 10px;
+    margin-right: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 91px;
+    height: 45;
+}
+
+.wrapper{
+    width: 50%;
+    display: flex;
+    justify-content: space-between;
+    padding: 5px;
+    background: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.05);
+    margin: 5px;
+}
+
+.a_categories:hover {
+    color: darkblue;
+}
+
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+.dropdown {
+    opacity: 0;
+    visibility: hidden;
+    position: absolute;
+    background: white;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    padding: 5px 0;
+    padding-bottom: 0;
+    padding-top: 0;
+    min-width: 150px;
+    z-index: 100;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-10px);
+    border: 2px solid cornflowerblue;
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out, visibility 0.3s;
+}
+
+.dropdown a {
+    display: block;
+    text-align: center;
+    padding: 5px;
+    text-decoration: none;
+    color: black;
+    transition: background 0.3s;
+    width: 150px;
+    border-radius: 5px;
+}
+
+.top {
+    box-shadow: 0 2px 0 cornflowerblue;
+}
+
+.middle {
+    box-shadow: 0 2px 0 cornflowerblue;
+}
+
+.bottom {
+    box-shadow: 0 -2px 0 cornflowerblue;
+}
+
+.dropdown a:hover {
+    background: #f1f1f1;
+}
+
+#logout-btn {
+    background: #e74c3c;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+
+.user-menu {
+    position: relative;
+    color: white;
+    transition: color 0.3s;
+    background-color: cornflowerblue;
+    border-radius: 8px;
+    padding: 5px;
+    margin: 2px;
+    margin-left: 10px;
+    margin-right: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 91px;
+    height: 45;
+}
+
+.user-button {
+    background: none;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    color: white;
+}

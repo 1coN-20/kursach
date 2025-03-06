@@ -1,0 +1,150 @@
+.auth_div1 {
+    margin: 50px auto;
+    padding: 30px;
+    background-color: cornflowerblue; 
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.15);
+    width: 100%;
+    max-width: 400px;
+}
+
+.main_list_news {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.news_header {
+    font-size: 28px;
+    font-weight: bold;
+    text-align: center;
+    color: white;
+}
+
+.news_description {
+    font-size: 16px;
+    text-align: left;
+    color: #555;
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+#register-form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 15px;
+}
+
+#register-form input {
+    padding: 10px;
+    font-size: 16px;
+    border: 2px solid cornflowerblue;
+    border-radius: 5px;
+    outline: none;
+    transition: border-color 0.3s ease;
+    width: 95%;
+}
+
+#register-form input:focus {
+    border-color: cornflowerblue;
+}
+
+.password-container {
+    display: flex;
+    align-items: center;
+    position: relative;
+    width: 100%;
+}
+
+#toggle-password {
+    position: absolute;
+    right: 10px;
+    background: none;
+    border: none;
+    color: #555;
+    cursor: pointer;
+    font-size: 14px;
+    padding: 5px;
+    z-index: 1;
+}
+
+#register-form button {
+    padding: 12px;
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
+    background-color: cornflowerblue;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    width: 100%;
+    margin-top: 16px;
+}
+
+#register-form button:hover {
+    background-color: darkblue;
+    transform: scale(1.05);
+}
+
+#register-form button:active {
+    transform: scale(1);
+}
+
+.auth-footer {
+    margin-top: 15px;
+    font-size: 14px;
+    text-align: end;
+}
+
+.auth-footer a {
+    color: cornflowerblue;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.auth-footer a:hover {
+    text-decoration: underline;
+}
+
+#response-message {
+    margin-top: 15px;
+    font-size: 16px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.form_div {
+    display: flex;
+    align-items: center; 
+    gap: 10px;
+    font-size: 16px;
+    color: #555;
+    width: 100%;
+}
+
+.checkbox {
+    width: 18px;
+    height: 18px;
+    accent-color: cornflowerblue;
+    border: 2px solid cornflowerblue;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.form_div p {
+    margin: 0; 
+    font-weight: bold;
+}
+
+.form{
+    margin-top: 20px;
+    padding: 15px;
+    background: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.05);
+}

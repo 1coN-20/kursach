@@ -1,0 +1,30 @@
+.list_obj{
+    width: 80%;
+    background-color: aquamarine;
+    border-radius: 5px;
+    margin: 40px auto;
+}
+
+.list_obj_top{
+    margin: 0 auto;
+    font-size: 24px;
+    padding-top: 7px;
+    text-align: center;
+}
+
+.list_obj_bottom{
+    display: flex;
+    font-size: 20px;
+    justify-content: space-between;
+    padding: 6px;
+}
+
+.team_photo{
+    width: 52px;
+    height: 52px;
+}
+
+.div_team1{
+    display: flex;
+    padding: 7px;
+}

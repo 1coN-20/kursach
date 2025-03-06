@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="register.css">
+    <link rel="stylesheet" href="/web/stc/pages/global/global.css">
+    <script src="register.js" defer></script>
+    <script src="/web/stc/pages/global/global.js"></script>
+    <title>Регистрация</title>
+</head>
+<body>
+    <header class="header_wrapper">
+        <div class="wrapper"> 
+            <div class="wrapper_logo"> 
+                <div><a href="/web/stc/pages/main/main.html"><img class="logo_img" src="/web/img/BC_Minsk_2022_logo.png"></a></div>
+            </div>
+            
+            <a class="a_categories" href="/web/stc/pages/main/main.html">Новости</a>
+            <a class="a_categories" href="/web/stc/pages/kalendar/kalendar.html">Календарь</a>
+            <a class="a_categories" href="/web/stc/pages/teams/teams.html">Команды</a>
+            <a class="a_categories" href="/web/stc/pages/club/club.html">Клуб</a>
+            <a class="a_categories" href="/web/stc/pages/shop/shop.html">Магазин</a>
+            <div class="basket_logo">
+                <div><a href="/web/stc/pages/basket/basket.html"><img class="logo_img" src="/web/img/basket.png"></a></div>
+                <span id="cart-item-count" class="cart-item-count">0</span>
+            </div>
+            <a class="a_categories" href="/web/stc/pages/auth/auth.html">Войти</a>
+        </div>
+    </header>
+
+    <div class="main_list_news">
+        <div class="auth_div1">
+            <a class="news_header">Регистрация</a>
+            <form id="register-form">
+                <div class="form">
+                    <p class="news_description">Email:</p>
+                    <input type="email" id="email" class="form_input" placeholder="Введите email" required>
+                    
+                    <p class="news_description">Имя:</p>
+                    <input type="text" id="name" class="form_input" placeholder="Введите имя" required>
+                    
+                    <p class="news_description">Пароль:</p>
+                    <input type="password" id="password" class="form_input" placeholder="Введите пароль" required>
+                    
+                    <p class="news_description">Номер телефона:</p>
+                    <input type="tel" id="phone_number" class="form_input" placeholder="+375 (__) ___-__-__" required maxlength="19">
+                    
+                    <p class="news_description">Адрес доставки:</p>
+                    <input type="text" id="delivery_address" class="form_input" placeholder="Введите адрес доставки" required></textarea>
+                    
+                    <button type="submit" id="register-button" class="form_button">Зарегистрироваться</button>
+                
+                    <div class="auth-footer">
+                        <p>Уже есть аккаунт? 
+                            <a class="auth_link" href="/web/stc/pages/auth/auth.html">Авторизоваться</a>
+                        </p>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
