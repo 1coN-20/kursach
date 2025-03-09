@@ -1,13 +1,13 @@
- <!DOCTYPE html>
-<html lang="ru">
+<!DOCTYPE html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="main.css">
+    <title>News</title>
+    <link rel="stylesheet" href="/web/stc/pages/main/newsDetails/newsDetails.css">
     <link rel="stylesheet" href="/web/stc/pages/global/global.css">
-    <title>Новости</title>
-    <script src="main.js" defer></script>
-    <script src="/web/stc/pages/global/global.js" defer></script>
+    <script src="/web/stc/pages/main/newsDetails/newsDetail.js"></script>
+    <script src="/web/stc/pages/global/global.js"></script>
 </head>
 <body>
     <header class="header_wrapper">
@@ -29,10 +29,21 @@
         </div>
     </header>
 
-    <div class="main">
-        <ul class="main_list_products">
-
-        </ul>
+    <div class="news-details-container">
+        <div class="title_wrapper">
+            <h1 id="news-title">Заголовок новости</h1>
+            <p id="news-date"></p>
+        </div>
+        <div class="img_wrapper">
+            <div id="news-image-container">
+                <img id="news-image" src="" alt="News Image">
+            </div>
+        </div>
+        <div class="title_wrapper">
+            <textarea id="news-content" class="news-content" readonly>
+                
+            </textarea>
+        </div>
     </div>
 </body>
 </html>

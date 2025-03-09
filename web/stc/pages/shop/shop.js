@@ -72,5 +72,5 @@ document.addEventListener("DOMContentLoaded", async function() {
         }
     }    
 
-    fetchProducts();  // Вызываем функцию для загрузки товаров
+    fetchProducts();
 });

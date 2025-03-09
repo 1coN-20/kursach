@@ -4,22 +4,22 @@ import path from 'path';
 import authController from './src/controllers/authController.js';
 import productController from './src/controllers/productController.js';
 import orderController from './src/controllers/orderController.js';
-import { createUserTable, createProductTable, createOrdersTable, createAllOrdersTable } from './src/config/database.js';
+import newsController from './src/controllers/newsController.js';
+import { createUserTable, createProductTable, createOrdersTable, createAllOrdersTable, createNewsTable } from './src/config/database.js';
 
 dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// Middleware для парсинга JSON
 app.use(express.json());
 
 app.use('/web', express.static(path.join(process.cwd(), 'web')));
 
-// Подключение маршрутов
 app.use('/controllers', authController);
 app.use('/controllers', productController);
 app.use('/controllers', orderController);
+app.use('/controllers', newsController);
 
 createUserTable()
     .then(() => {
@@ -50,6 +50,13 @@ createAllOrdersTable()
     })
     .catch((err) => {
         console.error("Error creating All Orders table:", err);
+    });
+createNewsTable()
+    .then(() => {
+        console.log("News table is ready.");
+    })
+    .catch((err) => {
+        console.error("Error creating News table:", err);
     });
 
 app.get('/', (req, res) => {

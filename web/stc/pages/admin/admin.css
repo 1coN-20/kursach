@@ -1,48 +1,38 @@
-.container {
-    width: 50%;
-    padding: 20px;
-    background-color: aquamarine;
-    border-radius: 10px;
-    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.15);
-    margin-top: 20px;
-    margin: auto;
-}
-
-.div_container{
-    display: flex;
-    justify-content: space-between;
-}
-
-.container2{
+.container2, .container3 {
     width: 250px;
-    padding: 20px;
+    height: 60px;
+    padding: 10px;
     background-color: cornflowerblue;
     border-radius: 10px;
     box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.15);
     margin-top: 10px;
-    margin-left: 10px;
     display: flex;
+    align-items: center;
     justify-content: center;
     text-align: center;
     transition: transform 0.3s ease-in-out;
 }
 
 .container2:hover, .container3:hover {
-    transform: translateY(-5px); 
+    transform: translateY(-5px);
 }
 
-.container3 {
-    transition: transform 0.3s ease-in-out;
-    position: relative;
-    display: inline-block;
-    width: 250px;
-    padding: 20px;
-    background-color: cornflowerblue;
-    border-radius: 10px;
-    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.15);
+.div_container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.chess-layout {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    justify-items: center;
     margin-top: 10px;
-    margin-right: 10px;
-    text-align: center;
+}
+
+.spacer {
+    visibility: hidden;
 }
 
 .dropdown1 {
@@ -72,14 +62,6 @@
     border-radius: 5px;
 }
 
-.top1 {
-    box-shadow: 0 2px 0 cornflowerblue;
-}
-
-.bottom1 {
-    box-shadow: 0 -2px 0 cornflowerblue;
-}
-
 .dropdown1 a:hover {
     background: #f1f1f1;
 }
@@ -90,45 +72,6 @@
     transform: translateX(-50%) translateY(0);
 }
 
-.header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
-}
-
-h1 {
-    margin: 0;
-}
-
-select {
-    padding: 5px;
-    font-size: 16px;
-}
-
-.form-section {
-    display: block;
-    margin-bottom: 20px;
-}
-
-.hidden {
-    display: none;
-}
-
-button {
-    padding: 10px 15px;
-    font-size: 16px;
-    background-color: cornflowerblue;
-    border: none;
-    color: white;
-    cursor: pointer;
-    border-radius: 5px;
-}
-
-button:hover {
-    background-color: darkblue;
-}
-
-.Users{
+.Users {
     color: white;
 }

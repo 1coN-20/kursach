@@ -351,8 +351,98 @@ const getUsersOrders = async (userName) => {
     }
 };
 
+const createNewsTable = async () => {
+    await pool.query(`
+        CREATE TABLE IF NOT EXISTS "News" (
+            id SERIAL PRIMARY KEY,
+            title VARCHAR(255) NOT NULL,
+            image_url VARCHAR(255) NOT NULL,
+            content TEXT NOT NULL,
+            published_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+            updatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+        );
+
+        CREATE OR REPLACE FUNCTION update_news_updated_at_column()
+        RETURNS TRIGGER AS $$
+        BEGIN
+            NEW.updatedAt = CURRENT_TIMESTAMP;
+            RETURN NEW;
+        END;
+        $$ LANGUAGE plpgsql;
+
+        CREATE TRIGGER update_news_updated_at
+        BEFORE UPDATE ON "News"
+        FOR EACH ROW EXECUTE FUNCTION update_news_updated_at_column();
+    `);
+};
+
+const addNews = async ({ title, image_url, content }) => {
+    try {
+        const result = await pool.query(`
+            INSERT INTO "News" (title, image_url, content)
+            VALUES ($1, $2, $3)
+            RETURNING *;
+        `, [title, image_url, content]);
+
+        return result.rows[0];
+    } catch (error) {
+        console.error("Ошибка при добавлении заказа:", error);
+        throw error;
+    }
+};
+
+const getAllNews = async () => {
+    try {
+        const result = await pool.query('SELECT * FROM "News"');
+        return result.rows;
+    } catch (error) {
+        throw error
+    }
+};
+
+const getNewsById = async (id) => {
+    const result = await pool.query(
+        'SELECT * FROM "News" WHERE id = $1',
+        [id]
+    );
+
+    if (result.rows.length === 0) {
+        throw new Error(`Новость с ID ${id} не найдена.`);
+    }
+
+    return result.rows[0];
+};
+
+const changeNews = async (id, title, image_url, content) => {
+    const result = await pool.query(`
+        UPDATE "News"
+        SET 
+            title = COALESCE(NULLIF($2, ''), title),
+            image_url = COALESCE(NULLIF($3, ''), image_url),
+            content = COALESCE(NULLIF($4, ''), content),
+            updatedAt = CURRENT_TIMESTAMP
+        WHERE id = $1
+        RETURNING *;
+    `, [id, title, image_url, content]);
+
+    return result.rows[0];
+};
+
+const deleteNews = async (id) => {
+    try {
+        const result = await pool.query(
+            'DELETE FROM "News" WHERE id = $1 RETURNING *',
+            [id]
+        );
+        return result.rows[0]; 
+    } catch (error) {
+        console.error('Ошибка при удалении заказа:', error);
+        throw error;
+    }
+};
 
 export { createUserTable, addUser, findUserByEmail, getAllUsers, deleteUserById, updateAdminFalse, updateAdminTrue, updateUserInfo,
         createProductTable, addProduct, deleteProduct, getAllProducts, changeProduct, getProductById, minusQuantity,
         createOrdersTable, addOrder, getAllOrders, deleteOrder,
-        createAllOrdersTable, getToAllOrdersTable, updateOrderStatus, cancelOrderStatus, getUsersOrders};
+        createAllOrdersTable, getToAllOrdersTable, updateOrderStatus, cancelOrderStatus, getUsersOrders,
+        createNewsTable, addNews, getAllNews, getNewsById, changeNews, deleteNews };

@@ -22,7 +22,6 @@ orderController.post('/add-order', async (req, res) => {
     }
 });
 
-// Получение всех заказов
 orderController.get("/get-orders", async (req, res) => {
     try {
         const orders = await OrderService.getAllOrders();

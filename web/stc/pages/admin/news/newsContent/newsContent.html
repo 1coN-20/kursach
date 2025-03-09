@@ -1,13 +1,13 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="main.css">
+    <title>Контент</title>
+    <link rel="stylesheet" href="/web/stc/pages/admin/news/newsContent/newsContent.css">
     <link rel="stylesheet" href="/web/stc/pages/global/global.css">
-    <title>Новости</title>
-    <script src="main.js" defer></script>
-    <script src="/web/stc/pages/global/global.js" defer></script>
+    <script src="/web/stc/pages/global/global.js"></script>
+    <script src="/web/stc/pages/admin/news/newsContent/newsContent.js"></script>
 </head>
 <body>
     <header class="header_wrapper">
@@ -28,11 +28,12 @@
             <a class="a_categories" href="/web/stc/pages/auth/auth.html">Войти</a>
         </div>
     </header>
-
-    <div class="main">
-        <ul class="main_list_products">
-
-        </ul>
+    <div class="title_wrapper">
+        <textarea id="news-content" class="news-content" readonly>               
+        </textarea>
+    </div>
+    <div class="back_wrapper">
+        <a class="back_button" href="/web/stc/pages/admin/news/news.html">Назад</a>
     </div>
 </body>
 </html>
