@@ -441,8 +441,128 @@ const deleteNews = async (id) => {
     }
 };
 
+const createTeamsTable = async () => {
+    await pool.query(`
+        CREATE TABLE IF NOT EXISTS "Teams" (
+            id SERIAL PRIMARY KEY,
+            name VARCHAR(255) NOT NULL,
+            image_url VARCHAR(255) NOT NULL,
+            home_address TEXT NOT NULL,
+            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+            updatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+        );
+
+        CREATE OR REPLACE FUNCTION update_news_updated_at_column()
+        RETURNS TRIGGER AS $$
+        BEGIN
+            NEW.updatedAt = CURRENT_TIMESTAMP;
+            RETURN NEW;
+        END;
+        $$ LANGUAGE plpgsql;
+
+        CREATE TRIGGER update_news_updated_at
+        BEFORE UPDATE ON "Teams"
+        FOR EACH ROW EXECUTE FUNCTION update_news_updated_at_column();
+    `);
+};
+
+const addTeam = async ({ name, image_url, home_address}) => {
+    try {
+        const result = await pool.query(`
+            INSERT INTO "Teams" (name, image_url, home_address)
+            VALUES ($1, $2, $3)
+            RETURNING *;
+        `, [name, image_url, home_address]);
+
+        return result.rows[0];
+    } catch (error) {
+        console.error("Ошибка при добавлении заказа:", error);
+        throw error;
+    }
+};
+
+const deleteTeam = async (id) => {
+    try {
+        const result = await pool.query(
+            'DELETE FROM "Teams" WHERE id = $1 RETURNING *',
+            [id]
+        );
+        return result.rows[0]; 
+    } catch (error) {
+        console.error('Ошибка при удалении заказа:', error);
+        throw error;
+    }
+};
+
+const changeTeam = async (id, name, image_url, home_address) => {
+    const result = await pool.query(`
+        UPDATE "Teams"
+        SET 
+            name = COALESCE(NULLIF($2, ''), name),
+            image_url = COALESCE(NULLIF($3, ''), image_url),
+            home_address = COALESCE(NULLIF($4, ''), home_address),
+            updatedAt = CURRENT_TIMESTAMP
+        WHERE id = $1
+        RETURNING *;
+    `, [id, name, image_url, home_address]);
+
+    return result.rows[0];
+};
+
+const getAllTeams = async () => {
+    try {
+        const result = await pool.query('SELECT * FROM "Teams"');
+        return result.rows;
+    } catch (error) {
+        throw error
+    }
+};
+
+const getTeamById = async (id) => {
+    const result = await pool.query(
+        'SELECT * FROM "Teams" WHERE id = $1',
+        [id]
+    );
+
+    if (result.rows.length === 0) {
+        throw new Error(`Новость с ID ${id} не найдена.`);
+    }
+
+    return result.rows[0];
+};
+
+const createGamesTable = async () => {
+    await pool.query(`
+        CREATE TABLE IF NOT EXISTS "Games" (
+        id SERIAL PRIMARY KEY,
+        enemy INT NOT NULL,
+        home BOOLEAN NOT NULL,
+        date TIMESTAMP NOT NULL,
+        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+        updatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+        FOREIGN KEY (enemy) REFERENCES "Teams"(id) ON DELETE CASCADE
+    );
+
+    CREATE OR REPLACE FUNCTION update_games_updated_at_column()
+    RETURNS TRIGGER AS $$
+    BEGIN
+        NEW.updatedAt = CURRENT_TIMESTAMP;
+        RETURN NEW;
+    END;
+    $$ LANGUAGE plpgsql;
+
+    CREATE TRIGGER update_games_updated_at
+    BEFORE UPDATE ON "Games"
+    FOR EACH ROW EXECUTE FUNCTION update_games_updated_at_column();
+    `);
+};
+
 export { createUserTable, addUser, findUserByEmail, getAllUsers, deleteUserById, updateAdminFalse, updateAdminTrue, updateUserInfo,
         createProductTable, addProduct, deleteProduct, getAllProducts, changeProduct, getProductById, minusQuantity,
         createOrdersTable, addOrder, getAllOrders, deleteOrder,
         createAllOrdersTable, getToAllOrdersTable, updateOrderStatus, cancelOrderStatus, getUsersOrders,
-        createNewsTable, addNews, getAllNews, getNewsById, changeNews, deleteNews };
+        createNewsTable, addNews, getAllNews, getNewsById, changeNews, deleteNews,
+        createTeamsTable, addTeam, deleteTeam, changeTeam, getAllTeams, getTeamById,
+        createGamesTable };
+
+export default pool;

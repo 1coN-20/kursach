@@ -1,0 +1,200 @@
+.container {
+    width: 50%;
+    padding: 20px;
+    background-color: cornflowerblue;
+    border-radius: 10px;
+    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.15);
+    margin-top: 20px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.div_container{
+    display: flex;
+    justify-content: space-between;
+}
+
+.form_div{
+    margin-top: 20px;
+    padding: 15px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+main {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+    background: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+thead {
+    background-color: cornflowerblue;
+    color: white;
+}
+
+th, td {
+    padding: 12px;
+    text-align: center;
+    border: 1px solid #ddd;
+}
+
+tbody tr:nth-child(odd) {
+    background: #f2f2f2;
+}
+
+tbody tr:hover {
+    background: #ddd;
+    transition: background 0.3s;
+}
+
+.delete-btn {
+    background: #e74c3c;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.delete-btn:hover {
+    background: #c0392b;
+}
+
+.update-btn{
+    background: green;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.header{
+    color: white;
+    text-align: center;
+}
+
+#add-game-form button,
+#change-product-form button {
+    margin-top: 10px;
+    padding: 10px;
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
+    background-color: cornflowerblue;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    width: 100%;
+}
+
+#add-game-form button:hover,
+#change-product-form button:hover {
+    background-color: darkblue;
+    transform: scale(1.05);
+}
+
+
+#add-game-form button:active,
+#change-product-form button:active {
+    transform: scale(1);
+}
+
+#change-product-form input[type="number"],
+#add-game-form select,
+#change-product-form select,
+#add-game-form input[type="datetime-local"],
+#change-product-form input[type="datetime-local"] {
+    padding: 10px;
+    font-size: 16px;
+    border: 2px solid cornflowerblue;
+    border-radius: 5px;
+    outline: none;
+    transition: border-color 0.3s ease;
+    width: 95%;
+    background: white;
+    appearance: none;
+}
+
+
+#change-product-form input[type="number"]:focus,
+#add-game-form select:focus,
+#change-product-form select:focus,
+#add-game-form input[type="datetime-local"]:focus,
+#change-product-form input[type="datetime-local"]:focus {
+    border-color: darkblue;
+}
+
+#add-game-form input[type="checkbox"],
+#change-product-form input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+}
+
+.news_description {
+    font-size: 16px;
+    text-align: left;
+    color: #555;
+    margin-bottom: 10px;
+}
+
+.search_wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.search_div {
+    display: flex;
+    align-items: center;
+    border: 2px solid cornflowerblue;
+    border-radius: 24px;
+    padding: 8px 15px;
+    max-width: 500px;
+    width: 100%;
+    background: white;
+    box-shadow: 0 1px 6px rgba(32, 33, 36, 0.28);
+    transition: box-shadow 0.2s ease-in-out;
+}
+
+.search_div:focus-within {
+    box-shadow: 0 1px 8px rgba(32, 33, 36, 0.4);
+}
+
+.search_input {
+    flex: 1;
+    border: none;
+    outline: none;
+    font-size: 16px;
+    padding: 5px;
+    color: #202124;
+}
+
+.search_img {
+    width: 20px;
+    height: 20px;
+}
