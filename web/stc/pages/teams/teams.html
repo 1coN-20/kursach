@@ -6,7 +6,6 @@
     <link rel="stylesheet" href="teams.css">
     <link rel="stylesheet" href="/web/stc/pages/global/global.css">
     <title>Команды</title>
-    <script src="teams.js" defer></script>
     <script src="/web/stc/pages/global/global.js" defer></script>
 </head>
 <body>
@@ -28,22 +27,26 @@
             <a class="a_categories" href="/web/stc/pages/auth/auth.html">Войти</a>
         </div>
     </header>
-    
+
     <div class="main">
-        <ul class="main_list">
-            <li class="list_obj">
-                <div class="div_team">
-                    <a class="team" href="/web/stc/pages/osnova/osnova.html">Основа</a>
-                    <a href="/web/stc/pages/osnova/osnova.html"><img class="photo" src="/web/img/main_team.jpg"></a>
+        <div class="main_list">
+            <a href="/web/stc/pages/osnova/osnova.html">
+                <div class="list_obj">
+                    <div class="team_header">Основая</div>
+                    <div class="div_team">
+                        <img class="photo" src="/web/img/main_team.jpg">
+                    </div>
                 </div>
-            </li>
-            <li class="list_obj">
-                <div class="div_team">
-                    <a class="team" href="/web/stc/pages/youth/youth.html">Молодежка</a>
-                    <a href="/web/stc/pages/youth/youth.html"><img class="photo" src="/web/img/youth_team.JPEG"></a>
+            </a>
+            <a href="/web/stc/pages/youth/youth.html">
+                <div class="list_obj">
+                        <div class="team_header">Молодежная</div>
+                    <div class="div_team">
+                        <img class="photo" src="/web/img/youth_team.JPEG">
+                    </div>
                 </div>
-            </li>
-        </ul>
+            </a>
+        </div>
     </div>
 </body>
 </html>

@@ -131,6 +131,24 @@ const createProductTable = async () => {
         CREATE TRIGGER update_product_updated_at
         BEFORE UPDATE ON "Product"
         FOR EACH ROW EXECUTE FUNCTION update_product_updated_at_column();
+
+        CREATE TRIGGER update_product_updated_at
+BEFORE UPDATE ON "Product"
+FOR EACH ROW EXECUTE FUNCTION update_product_updated_at_column();
+
+CREATE OR REPLACE FUNCTION prevent_negative_quantity()
+RETURNS TRIGGER AS $$
+BEGIN
+    IF NEW.quantity < 0 THEN
+        RAISE EXCEPTION 'Quantity cannot be negative';
+    END IF;
+    RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE TRIGGER prevent_negative_quantity_trigger
+BEFORE UPDATE ON "Product"
+FOR EACH ROW EXECUTE FUNCTION prevent_negative_quantity();
     `);
 };
 
@@ -164,17 +182,16 @@ const getProductById = async (id) => {
     return result.rows[0];
 };
 
-const minusQuantity = async (id, orderQuantity) =>{
+const minusQuantity = async (id, orderQuantity) => {
     const result = await pool.query(
         `UPDATE "Product" 
-        SET quantity = quantity - $2, updatedAt = CURRENT_TIMESTAMP
-        WHERE name = $1 AND quantity >= $2
-        RETURNING *;
-        `,
+        SET quantity = GREATEST(quantity - $2, 0), updatedAt = CURRENT_TIMESTAMP
+        WHERE id = $1
+        RETURNING *;`,
         [id, orderQuantity]
     );
     return result.rows[0];
-}
+};
 
 const changeProduct = async (id, name, image_url, price, quantity) => {
     const result = await pool.query(`
@@ -243,7 +260,8 @@ const getAllOrders = async() => {
             o.email,
             o.phone_number,
             o.delivery_address,
-            array_agg(p.name) AS product_id,
+            o.product_id,
+            array_agg(p.name) AS product_name,
             o.quantity,
             o.createdAt,
             o.updatedAt

@@ -1,17 +1,91 @@
 .main{
     width: 95%;
-    background-color: aquamarine;
+    background-color: cornflowerblue;
     margin: 0 auto;
     border-radius: 5px;
+    margin-top: 10px;
+    padding: 10px;
 }
 
 .div_head{
     font-weight: bold;
-    margin: 0 auto;
+    margin: 0 0 15px;
     font-size: 36px;
     text-align: center;
+    color: white;
 }
 
 .div_team{
     text-align: center;
+}
+
+.players{
+    display: flex;
+    justify-content: center;
+    background-color: white;
+    flex-direction: column;
+    border-radius: 8px;
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.05);
+    padding: 10px;
+    margin-bottom: 50px;
+}
+
+ol{
+    background-color: cornflowerblue;
+    border-radius: 8px;
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.05);
+    margin-bottom: 0;
+}
+
+li{
+    margin: 10px;
+    color: white;
+}
+
+.p_players{
+    text-align: center;
+    background-color: cornflowerblue;
+    font-size: 20px;
+    padding: 10px;
+    border-radius: 8px;
+    color: white;
+    margin: 0;
+}
+
+.content_wrap{
+    display: flex;
+    justify-content: space-around;
+}
+
+.person{
+    text-align: center;
+    background-color: cornflowerblue;
+    padding: 10px;
+    border-radius: 8px;
+    color: white;
+    margin-top: 16px;
+}
+
+.person_header{
+    font-size: 18px;
+    font-weight: bold;
+    margin: 0;
+}
+
+.photo{
+    width: 50%;
+    height: max-content;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: white;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+}
+
+.img_d{
+    height: 95%;
+    width: 95%;
+    object-fit: cover;
+    border-radius: 8px;
 }

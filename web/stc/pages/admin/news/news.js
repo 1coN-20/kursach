@@ -140,11 +140,8 @@ document.getElementById("change-product-form").addEventListener("submit", async 
     const id = document.getElementById("product-id").value;
     const title = document.getElementById("change-product-name").value;
     const image_url = document.getElementById("change-product-image").value;
-    const content = document.getElementById("change-product-price");
+    const content = document.getElementById("change-product-price").value;
     
-    console.log('productId:', id);
-    console.log('title:', title);
-    console.log('image_url:', image_url);
     console.log('content:', content);      
 
     try {

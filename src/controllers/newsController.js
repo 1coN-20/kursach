@@ -58,6 +58,8 @@ newsController.get('/get-news/:id', async (req, res) => {
 newsController.put('/change-news', async (req, res) => {
     try {
         const { id, title, image_url, content } = req.body;
+        
+        console.log("Controller log:", content);
 
         if (!title || !image_url || !content) {
             return res.status(400).json({ success: false, error: "Все поля обязательны!" });

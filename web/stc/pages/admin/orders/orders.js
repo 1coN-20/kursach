@@ -37,7 +37,7 @@ document.addEventListener("DOMContentLoaded", async function () {
                 <td>${order.email}</td>
                 <td>${order.phone_number}</td>
                 <td>${order.delivery_address}</td>
-                <td>${order.product_id.join(", ")}</td> 
+                <td>${order.product_name.join(", ")}</td> 
                 <td>${order.quantity.join(", ")}</td>
                 <td>
                     <button class="delete-btn" data-id="${order.id}">Отменить</button>
@@ -51,7 +51,6 @@ document.addEventListener("DOMContentLoaded", async function () {
     }
 
     function addEventListeners() {
-
         document.querySelectorAll(".delete-btn").forEach(button => {
             button.addEventListener("click", async function () {
                 const orderId = this.getAttribute("data-id");
@@ -66,11 +65,18 @@ document.addEventListener("DOMContentLoaded", async function () {
         document.querySelectorAll(".update-btn").forEach(button => {
             button.addEventListener("click", async function () {
                 const orderId = this.getAttribute("data-id");
-                const orderRow = this.closest("tr");
+                
+                // Найти заказ по ID
+                const order = ordersData.find(o => o.id == orderId);
+                if (!order) {
+                    console.error("Заказ не найден!");
+                    return;
+                }
 
-                const productIds = orderRow.querySelector("td:nth-child(6)").textContent.trim().split(",").map(id => id.trim());
-                const quantities = orderRow.querySelector("td:nth-child(7)").textContent.trim().split(",").map(qty => parseInt(qty.trim()));
-    
+                const productIds = order.product_id; 
+                console.log("porpcwcw", productIds);// Берем product_id из данных, а не из таблицы
+                const quantities = order.quantity.map(qty => Number(qty)); // Убедимся, что qty — число
+
                 if (confirm("Вы уверены, что хотите завершить этот заказ?")) {
                     await updateOrder(orderId, productIds, quantities);
                     await deleteOrder(orderId);
