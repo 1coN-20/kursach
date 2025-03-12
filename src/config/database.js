@@ -117,7 +117,7 @@ const createProductTable = async () => {
             price DECIMAL(10, 2) NOT NULL,
             quantity INT NOT NULL,
             createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-            updatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+            updatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
         );
         
         CREATE OR REPLACE FUNCTION update_product_updated_at_column()
@@ -212,33 +212,36 @@ const changeProduct = async (id, name, image_url, price, quantity) => {
 const createOrdersTable = async () => {
     await pool.query(`
         CREATE TABLE IF NOT EXISTS "Orders" (
-    id SERIAL PRIMARY KEY,
-    name VARCHAR(255) NOT NULL,
-    email VARCHAR(255) NOT NULL,
-    phone_number VARCHAR(20) NOT NULL,
-    delivery_address TEXT NOT NULL,
-    product_id INTEGER[] NOT NULL, -- Массив ID продуктов
-    quantity INTEGER[] NOT NULL, -- Количество каждого продукта
-    createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    updatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-);
+            id SERIAL PRIMARY KEY,
+            name VARCHAR(255) NOT NULL, -- Дублируем имя для удобства, но не используем его для связи
+            email VARCHAR(255) NOT NULL,
+            phone_number VARCHAR(20) NOT NULL,
+            delivery_address TEXT NOT NULL,
+            product_id INTEGER[] NOT NULL, -- Массив ID продуктов
+            quantity INTEGER[] NOT NULL, -- Количество каждого продукта
+            createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+            updatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+        );
 
-CREATE OR REPLACE FUNCTION update_orders_updated_at_column()
-RETURNS TRIGGER AS $$
-BEGIN
-    NEW.updatedAt = CURRENT_TIMESTAMP;
-    RETURN NEW;
-END;
-$$ LANGUAGE plpgsql;
+        -- Функция для обновления столбца updatedAt
+        CREATE OR REPLACE FUNCTION update_orders_updated_at_column()
+        RETURNS TRIGGER AS $$
+        BEGIN
+            NEW.updatedAt = CURRENT_TIMESTAMP;
+            RETURN NEW;
+        END;
+        $$ LANGUAGE plpgsql;
 
-CREATE TRIGGER update_orders_updated_at
-BEFORE UPDATE ON "Orders"
-FOR EACH ROW EXECUTE FUNCTION update_orders_updated_at_column();
+        -- Триггер для обновления updatedAt при изменении заказа
+        CREATE TRIGGER update_orders_updated_at
+        BEFORE UPDATE ON "Orders"
+        FOR EACH ROW EXECUTE FUNCTION update_orders_updated_at_column();
     `);
 };
 
 const addOrder = async ({ name, email, phone_number, delivery_address, product_id, quantity }) => {
     try {
+
         const result = await pool.query(`
             INSERT INTO "Orders" (name, email, phone_number, delivery_address, product_id, quantity)
             VALUES ($1, $2, $3, $4, $5, $6)
@@ -285,10 +288,10 @@ const deleteOrder = async (id) => {
     }
 };
 
-const createAllOrdersTable = async() =>{
+const createAllOrdersTable = async () => {
     await pool.query(`
         CREATE TABLE IF NOT EXISTS "AllOrders" (
-            id INTEGER PRIMARY KEY,
+            id INTEGER PRIMARY KEY, -- Убрали REFERENCES "Orders"(id), чтобы записи не удалялись
             name VARCHAR(255) NOT NULL,
             email VARCHAR(255) NOT NULL,
             phone_number VARCHAR(20) NOT NULL,
@@ -311,9 +314,8 @@ const createAllOrdersTable = async() =>{
         CREATE TRIGGER trigger_copy_to_all_orders
         AFTER INSERT ON "Orders"
         FOR EACH ROW EXECUTE FUNCTION copy_to_all_orders();
-        `);
+    `);
 };
-
 const getToAllOrdersTable = async() =>{
     const result = await pool.query(`
         SELECT 
