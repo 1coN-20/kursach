@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Report</title>
+    <link rel="stylesheet" href="/web/stc/pages/admin/report/report.css">
+    <link rel="stylesheet" href="/web/stc/pages/global/global.css">
+    <script src="/web/stc/pages/admin/report/report.js" defer></script>
+    <script src="/web/stc/pages/global/global.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <header class="header_wrapper">
+        <div class="wrapper"> 
+            <div class="wrapper_logo"> 
+                <div><a href="/web/stc/pages/main/main.html"><img class="logo_img" src="/web/img/BC_Minsk_2022_logo.png"></a></div>
+            </div>
+            
+            <a class="a_categories" href="/web/stc/pages/main/main.html">Новости</a>
+            <a class="a_categories" href="/web/stc/pages/kalendar/kalendar.html">Календарь</a>
+            <a class="a_categories" href="/web/stc/pages/teams/teams.html">Команды</a>
+            <a class="a_categories" href="/web/stc/pages/club/club.html">Клуб</a>
+            <a class="a_categories" href="/web/stc/pages/shop/shop.html">Магазин</a>
+            <div class="basket_logo">
+                <div><a href="/web/stc/pages/basket/basket.html"><img class="logo_img" src="/web/img/basket.png"></a></div>
+                <span id="cart-item-count" class="cart-item-count">0</span>
+            </div>
+            <a class="a_categories" href="/web/stc/pages/auth/auth.html">Войти</a>
+        </div>
+    </header>
+
+    <div class="container">
+        <h1>Отчёт по заказам</h1>
+
+        <br><br>
+
+        <div class="chart-container">
+            <canvas id="ordersChart"></canvas>
+        </div>
+
+        <h2>Самый продаваемый товар: <span id="bestSellingProduct"></span></h2>
+        <h2>Процент завершенных заказов: <span id="completionRate"></span></h2>
+        <h2>Процент отмененных заказов: <span id="cancelRate"></span></h2>
+
+        <div class="chart-container">
+            <button onclick="downloadExcel()" class="analytics-btn">Скачать отчёт в Excel</button>
+        </div>
+    </div>
+</body>
+</html>

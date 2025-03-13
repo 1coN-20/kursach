@@ -7,6 +7,7 @@ import orderController from './src/controllers/orderController.js';
 import newsController from './src/controllers/newsController.js';
 import teamController from './src/controllers/teamController.js';
 import gameController from './src/controllers/gameController.js';
+import analitController from './src/controllers/analitController.js';
 import { createUserTable, createProductTable, createOrdersTable, createAllOrdersTable, createNewsTable, createTeamsTable, createGamesTable } from './src/config/database.js';
 
 dotenv.config();
@@ -24,6 +25,7 @@ app.use('/controllers', orderController);
 app.use('/controllers', newsController);
 app.use('/controllers', teamController);
 app.use('/controllers', gameController);
+app.use('/controllers', analitController);
 
 createUserTable()
     .then(() => {

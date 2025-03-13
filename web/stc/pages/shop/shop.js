@@ -2,15 +2,19 @@ function addToCart(productId) {
     const productName = document.getElementById(`product-name-${productId}`).innerText;
     const productPrice = document.getElementById(`product-price-${productId}`).innerText.replace('Цена: ', '').replace(' руб.', '');
     const productImageUrl = document.getElementById(`product-img-${productId}`).src;
+    const productQuantity = parseInt(document.getElementById(`product-stock-${productId}`).innerText.replace('Наличие: ', ''));
 
     let cart = JSON.parse(localStorage.getItem('cart')) || [];
 
     const existingProduct = cart.find(product => product.id === productId);
 
-    console.log(productImageUrl);
-
     if (existingProduct) {
-        existingProduct.quantity += 1;
+        if (existingProduct.quantity < productQuantity) {
+            existingProduct.quantity += 1;
+        } else {
+            alert(`Невозможно добавить больше ${productQuantity} единиц этого товара в корзину.`);
+            return;
+        }
     } else {
         cart.push({
             id: productId,
